@@ -15,6 +15,12 @@ A beautiful, feature-rich Lorem Ipsum generator built with vanilla JavaScript.
   - Customizable count (1-100)
   - HTML tag wrapping option
 
+- **History & Favorites** ⭐ NEW:
+  - Automatically saves recent generations (up to 10)
+  - Save favorite presets with custom names
+  - Quick copy and reload from history
+  - Settings preserved in localStorage
+
 - **Stats Display**: Word count, character count, and paragraph count
 
 - **One-Click Copy**: Copy generated text to clipboard
@@ -33,6 +39,19 @@ open index.html
 3. Choose your style (classic, bacon, hipster, or corporate)
 4. Click "Generate" to create text
 5. Use "Copy to Clipboard" to copy the result
+
+### Using History & Favorites
+
+**Recent Generations**:
+- Each generation is automatically saved to history
+- Click the star (☆) icon to save a preset to favorites
+- Use copy (📋) to quickly copy old generations
+- Use settings (⚙️) to reload previous configurations
+
+**Saved Presets**:
+- View your favorite presets in the favorites section
+- Name your presets for easy identification
+- Load presets instantly with all settings intact
 
 ## Example Outputs
 

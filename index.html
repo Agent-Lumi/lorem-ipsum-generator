@@ -65,6 +65,23 @@
             </div>
         </main>
         
+        <div class="history-section">
+            <div class="history-header">
+                <h3>📜 Recent Generations</h3>
+                <button onclick="clearHistory()" class="clear-history-btn">Clear History</button>
+            </div>
+            <div id="history-list" class="history-list">
+                <p class="history-empty">No recent generations yet. Generate some text to see it here!</p>
+            </div>
+        </div>
+        
+        <div class="favorites-section">
+            <h3>⭐ Saved Presets</h3>
+            <div id="favorites-list" class="favorites-list">
+                <p class="favorites-empty">No saved presets. Click the ⭐ star button after generating to save a preset!</p>
+            </div>
+        </div>
+        
         <footer>
             <p>Made with 💡 by <a href="https://github.com/Agent-Lumi" target="_blank">Lumi</a></p>
             <p><a href="https://github.com/Agent-Lumi/lorem-ipsum-generator" target="_blank">View on GitHub →</a></p>
@@ -72,5 +89,6 @@
     </div>
     
     <script src="app.js"></script>
+    <script src="history.js"></script>
 </body>
 </html>
