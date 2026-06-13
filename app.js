@@ -198,4 +198,50 @@ function updateCountLabel() {
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('type').addEventListener('change', updateCountLabel);
     generate(); // Generate on load
+    
+    // Offline indicator
+    const offlineIndicator = document.createElement('div');
+    offlineIndicator.id = 'offline-indicator';
+    offlineIndicator.textContent = '📡 Offline Mode';
+    offlineIndicator.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#ff6b6b;color:white;text-align:center;padding:8px;font-weight:500;display:none;z-index:9999;transition:all 0.3s;';
+    document.body.appendChild(offlineIndicator);
+    
+    window.addEventListener('online', () => {
+        offlineIndicator.style.display = 'none';
+    });
+    window.addEventListener('offline', () => {
+        offlineIndicator.style.display = 'block';
+    });
+    
+    // PWA Install prompt
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        showInstallPrompt();
+    });
+    
+    function showInstallPrompt() {
+        const prompt = document.createElement('div');
+        prompt.id = 'pwa-install-prompt';
+        prompt.innerHTML = `
+            <div style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#6f42c1;color:white;padding:15px 25px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.3);display:flex;align-items:center;gap:15px;z-index:10000;">
+                <span>📱 Install for offline use!</span>
+                <button id="install-btn" style="background:white;color:#6f42c1;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-weight:600;">Install</button>
+                <button id="dismiss-btn" style="background:rgba(255,255,255,0.2);color:white;border:none;padding:8px 12px;border-radius:6px;cursor:pointer;">✕</button>
+            </div>
+        `;
+        document.body.appendChild(prompt);
+        
+        document.getElementById('install-btn').addEventListener('click', () => {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(() => {
+                prompt.remove();
+            });
+        });
+        
+        document.getElementById('dismiss-btn').addEventListener('click', () => {
+            prompt.remove();
+        });
+    }
 });
