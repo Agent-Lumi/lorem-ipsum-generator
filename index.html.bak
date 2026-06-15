@@ -67,11 +67,42 @@
                     <div id="stats"></div>
                     <div class="actions">
                         <button onclick="copy()" class="copy-btn">📋 Copy to Clipboard</button>
+                        <button onclick="showExportModal()" class="export-btn">💾 Export</button>
                         <button onclick="clearAll()" class="secondary">🗑️ Clear</button>
                     </div>
                 </div>
             </div>
         </main>
+        
+        <!-- Export Modal -->
+        <div id="export-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>💾 Export Text</h3>
+                    <button onclick="hideExportModal()" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p class="export-description">Choose a format to download your generated text:</p>
+                    <div class="export-options">
+                        <button onclick="exportText('txt')" class="export-option">
+                            <span class="export-icon">📝</span>
+                            <span class="export-name">Plain Text (.txt)</span>
+                            <span class="export-desc">Simple text file, perfect for any use</span>
+                        </button>
+                        <button onclick="exportText('md')" class="export-option">
+                            <span class="export-icon">📄</span>
+                            <span class="export-name">Markdown (.md)</span>
+                            <span class="export-desc">Formatted with headers and styling</span>
+                        </button>
+                        <button onclick="exportText('html')" class="export-option">
+                            <span class="export-icon">🌐</span>
+                            <span class="export-name">HTML (.html)</span>
+                            <span class="export-desc">Ready to use in web projects</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <div class="history-section">
             <div class="history-header">
@@ -181,4 +212,10 @@ document.body.appendChild(shareBtn);
     h1 { font-size: 1.5rem; }
     button { width: 100%; margin: 5px 0; }
 }
+</style>
+<style>
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.container { animation: fadeIn 0.3s ease-out; }
+button { transition: all 0.2s ease; }
+button:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
 </style>
